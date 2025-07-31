@@ -187,10 +187,3 @@ MIT © 2025 [ZyroTech](https://yourdomain.com)
 
 Built with ❤️ by Nexcraft Digital. Powered by [Next.js](https://nextjs.org), [TailwindCSS](https://tailwindcss.com), and [Framer Motion](https://www.framer.com/motion/).
 
-```
-
----
-
-✅ **No fragments.**  
-✅
-```

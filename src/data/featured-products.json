@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "iPhone 15 Pro",
+    "description": "Titanium build, lightning-fast A17 Pro chip, and all-day battery.",
+    "image": "/images/iphone-13-pro.jpg",
+    "price": 1299
+  },
+  {
+    "id": 2,
+    "title": "MacBook Air M2",
+    "description": "Ultra-light. Ultra-powerful. Perfect for work and play.",
+    "image": "/images/macbook.jpg",
+    "price": 1499
+  },
+  {
+    "id": 3,
+    "title": "AirPods Pro 2",
+    "description": "Spatial audio and active noise cancellation that adapts.",
+    "image": "/images/airpods.jpg",
+    "price": 299
+  }
+]

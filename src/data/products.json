@@ -1,0 +1,253 @@
+[
+  {
+    "id": 1,
+    "slug": "iphone-15-pro",
+    "title": "iPhone 15 Pro",
+    "description": "Apple's latest innovation features the groundbreaking A17 Pro chip and a lightweight titanium design, delivering unmatched performance and durability.",
+    "shortDescription": "Titanium design with A17 Pro chip.",
+    "image": "/images/products/iphone-15.jpg",
+    "price": 1050000,
+    "category": "phones"
+  },
+  {
+    "id": 2,
+    "slug": "iphone-13",
+    "title": "iPhone 13",
+    "description": "A reliable classic with the powerful A15 Bionic chip, sleek aluminum build, and outstanding battery life.",
+    "shortDescription": "Sleek build with A15 Bionic chip.",
+    "image": "/images/products/iphone-13.jpg",
+    "price": 680000,
+    "category": "phones"
+  },
+  {
+    "id": 3,
+    "slug": "iphone-12-pro",
+    "title": "iPhone 12 Pro",
+    "description": "Premium performance with the A14 Bionic chip, LiDAR scanner, and Pro camera system for stunning photos.",
+    "shortDescription": "Triple-camera system with LiDAR.",
+    "image": "/images/products/iphone-12-pro.jpg",
+    "price": 720000,
+    "category": "phones"
+  },
+  {
+    "id": 4,
+    "slug": "iphone-15-pro-max",
+    "title": "iPhone 15 Pro Max",
+    "description": "The ultimate Apple experience—larger display, longer battery life, and top-tier performance.",
+    "shortDescription": "Flagship iPhone with large screen.",
+    "image": "/images/products/iphone-15-pro-max.jpg",
+    "price": 210000,
+    "category": "phones"
+  },
+  {
+    "id": 5,
+    "slug": "iphone-11-pro-max",
+    "title": "iPhone 11 Pro Max",
+    "description": "Triple-camera performance meets durable design. A top choice for longevity and reliability.",
+    "shortDescription": "Great battery and triple cameras.",
+    "image": "/images/products/iphone-11-pro-max.jpg",
+    "price": 185000,
+    "category": "phones"
+  },
+  {
+    "id": 6,
+    "slug": "macbook-air-m2",
+    "title": "MacBook Air M2",
+    "description": "Apple's lightest laptop just got faster. The M2 chip handles creative tasks with ease, wrapped in a silent, fanless design.",
+    "shortDescription": "Lightweight, powerful, fanless.",
+    "image": "/images/products/macbook-air-m2.jpg",
+    "price": 1350000,
+    "category": "laptops"
+  },
+  {
+    "id": 7,
+    "slug": "macbook-pro-14",
+    "title": "MacBook Pro 14\" M2",
+    "description": "For pros who need power—4K editing, app development, and long battery life with ProMotion display.",
+    "shortDescription": "Pro-level performance in 14\" size.",
+    "image": "/images/products/macbook-pro-14.jpg",
+    "price": 2200000,
+    "category": "laptops"
+  },
+  {
+    "id": 8,
+    "slug": "hp-envy-x360",
+    "title": "HP Envy x360",
+    "description": "2-in-1 flexibility meets Ryzen power. Vivid touchscreen and sleek design for productivity.",
+    "shortDescription": "Convertible touchscreen productivity.",
+    "image": "/images/products/hp-envy-x360.jpg",
+    "price": 740000,
+    "category": "laptops"
+  },
+  {
+    "id": 9,
+    "slug": "lenovo-ideapad-5",
+    "title": "Lenovo IdeaPad 5",
+    "description": "Reliable all-rounder with modern design, Dolby Audio, and Ryzen processing power.",
+    "shortDescription": "Affordable, modern, versatile laptop.",
+    "image": "/images/products/lenovo-ideapad.jpg",
+    "price": 550000,
+    "category": "laptops"
+  },
+  {
+    "id": 10,
+    "slug": "asus-vivobook-15",
+    "title": "ASUS VivoBook 15",
+    "description": "Full HD display, ample storage, and a compact chassis for everyday use.",
+    "shortDescription": "Balanced specs for daily tasks.",
+    "image": "/images/products/asus-vivobook.jpg",
+    "price": 460000,
+    "category": "laptops"
+  },
+  {
+    "id": 11,
+    "slug": "iphone-14-pro",
+    "title": "iPhone 14 Pro",
+    "description": "Experience the future of smartphones with the iPhone 14 Pro. Featuring a stunning 6.1-inch Super Retina XDR display with ProMotion, the A16 Bionic chip for blazing performance, and an advanced triple-camera system that captures every detail even in low light. Comes with Dynamic Island, always-on display, and top-tier build quality.",
+    "shortDescription": "6.1\" OLED, A16 Bionic, Pro camera system.",
+    "image": "/images/products/iphone-14-pro.jpg",
+    "price": 1150000,
+    "category": "phones"
+  },
+
+  {
+    "id": 12,
+    "slug": "apple-airpods-pro",
+    "title": "Apple AirPods Pro (2nd Gen)",
+    "description": "Active noise cancellation, spatial audio, and all-day comfort in a refined design.",
+    "shortDescription": "Immersive sound with noise canceling.",
+    "image": "/images/products/apple-airpods-pro.jpg",
+    "price": 145000,
+    "category": "accessories"
+  },
+  {
+    "id": 13,
+    "slug": "iphone-13-pro",
+    "title": "iPhone 13 Pro",
+    "description": "ProMotion display and advanced camera system for creative professionals and content creators.",
+    "shortDescription": "Performance and pro-level photos.",
+    "image": "/images/products/iphone-13-pro.jpg",
+    "price": 18000,
+    "category": "phones"
+  },
+  {
+    "id": 14,
+    "slug": "ipad-pro",
+    "title": "iPad Pro",
+    "description": "Powerful tablet with M1/M2 chip, ProMotion display, and Apple Pencil support for creators.",
+    "shortDescription": "High-performance tablet for pros.",
+    "image": "/images/products/ipad-pro.jpg",
+    "price": 120000,
+    "category": "accessories"
+  },
+  {
+    "id": 15,
+    "slug": "hp-laptop",
+    "title": "HP EliteBook 840 G8",
+    "description": "Enterprise-grade laptop with strong security features and performance for business users.",
+    "shortDescription": "Secure and sleek business laptop.",
+    "image": "/images/products/hp-laptop.jpg",
+    "price": 15000,
+    "category": "laptops"
+  },
+  {
+    "id": 16,
+    "slug": "iphone-16",
+    "title": "iPhone 16 Plus",
+    "description": "Early look at Apple’s next-generation iPhone with improved performance and camera system.",
+    "shortDescription": "Next-gen Apple power preview.",
+    "image": "/images/products/iphone-16.jpg",
+    "price": 85000,
+    "category": "phones"
+  },
+  {
+    "id": 17,
+    "slug": "razer-blackshark-v2",
+    "title": "Razer BlackShark V2",
+    "description": "THX-certified headset with immersive audio and pro-level microphone clarity.",
+    "shortDescription": "Esports-grade gaming headset.",
+    "image": "/images/products/product-17.jpg",
+    "price": 65000,
+    "category": "accessories"
+  },
+  {
+    "id": 18,
+    "slug": "iphone-14-pro-max",
+    "title": "iPhone 14 Pro Max",
+    "description": "Dynamic Island, advanced safety features, and exceptional camera performance.",
+    "shortDescription": "Flagship Apple device with camera focus.",
+    "image": "/images/products/iphone-14-pro-max.jpg",
+    "price": 820000,
+    "category": "phones"
+  },
+  {
+    "id": 19,
+    "slug": "tecno-camon-20",
+    "title": "Tecno Camon 20",
+    "description": "AI camera tech, bold design, and efficient performance for creative users on a budget.",
+    "shortDescription": "Budget-friendly camera phone.",
+    "image": "/images/products/tecno-camon-20.jpg",
+    "price": 130000,
+    "category": "phones"
+  },
+  {
+    "id": 20,
+    "slug": "google-pixel-9a",
+    "title": "Google Pixel 9a",
+    "description": "Stock Android, powerful AI photography, and smooth performance with long-term support.",
+    "shortDescription": "Flagship camera at lower price.",
+    "image": "/images/products/google-pixel-9a.jpg",
+    "price": 410000,
+    "category": "phones"
+  },
+  {
+    "id": 21,
+    "slug": "dell-xps-13",
+    "title": "Dell XPS 13",
+    "description": "Ultra-portable with edge-to-edge display and premium design for mobile professionals.",
+    "shortDescription": "Premium compact ultrabook.",
+    "image": "/images/products/dell-xps-13.jpg",
+    "price": 1080000,
+    "category": "laptops"
+  },
+  {
+    "id": 22,
+    "slug": "acer-aspire-5",
+    "title": "Acer Aspire 5",
+    "description": "Powerful enough for multitasking, sleek enough for daily use with a value price tag.",
+    "shortDescription": "Affordable multitasking laptop.",
+    "image": "/images/products/acer-aspire-5.jpg",
+    "price": 380000,
+    "category": "laptops"
+  },
+  {
+    "id": 23,
+    "slug": "magsafe-charger",
+    "title": "Apple MagSafe Charger",
+    "description": "Effortless magnetic wireless charging for iPhones with perfect alignment and safety.",
+    "shortDescription": "Magnetic wireless charging.",
+    "image": "/images/products/apple-magsafe-charger.jpg",
+    "price": 40000,
+    "category": "accessories"
+  },
+  {
+    "id": 24,
+    "slug": "jbl-go-3",
+    "title": "JBL GO 3 Speaker",
+    "description": "Waterproof, portable speaker with punchy sound for outdoor adventures.",
+    "shortDescription": "Bold sound in your pocket.",
+    "image": "/images/products/jbl-go-3-speaker.jpg",
+    "price": 28000,
+    "category": "accessories"
+  },
+  {
+    "id": 25,
+    "slug": "oraimo-powerbox-500",
+    "title": "Oraimo PowerBox 22.5W Power Bank",
+    "description": "High-capacity portable power bank with dual ports and fast-charging support.",
+    "shortDescription": "Stay charged on the go.",
+    "image": "/images/products/oraimo-powerbox.jpg",
+    "price": 38000,
+    "category": "accessories"
+  }
+]

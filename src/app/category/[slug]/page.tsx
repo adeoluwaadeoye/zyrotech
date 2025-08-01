@@ -12,7 +12,7 @@ type PageProps = {
 }
 
 export default async function Page(props: PageProps) {
-  const slug = props.params.slug
+  const { slug } = await props.params // ✅ async destructuring
 
   if (!validCategories.includes(slug as Category)) {
     notFound()

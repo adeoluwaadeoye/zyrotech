@@ -38,8 +38,8 @@ export default function ProductsPage() {
       }
     }, 100)
   }
-
   return (
+
     <div className="px-4 py-10 max-w-7xl mx-auto">
       <BreadCrumb />
 

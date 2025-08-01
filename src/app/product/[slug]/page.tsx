@@ -5,13 +5,13 @@ import { notFound } from 'next/navigation'
 import BreadCrumb from '@/components/BreadCrumb'
 
 interface PageProps {
-  params: {
-    slug: string
-  }
+  params: { slug: string }
 }
 
 export default async function ProductPage({ params }: PageProps) {
-  const product = await getProductBySlug(params.slug)
+  const { slug } = await params // ✅ required for Next 14+
+
+  const product = await getProductBySlug(slug)
 
   if (!product) return notFound()
 

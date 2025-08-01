@@ -7,7 +7,6 @@ import type { Metadata, Viewport } from 'next'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
-// ✅ Updated metadata with full image URLs
 export const metadata: Metadata = {
   title: {
     default: 'ZyroTech Gadgets Store',
@@ -24,16 +23,16 @@ export const metadata: Metadata = {
     'Nigeria',
     'Gadget Deals',
   ],
-  metadataBase: new URL('https://zyrotech.netlify.app/'),
+  metadataBase: new URL('https://zyrotech.netlify.app'),
   openGraph: {
     title: 'ZyroTech Gadgets Store',
     description:
       'Affordable, high-quality gadgets. Discover our iPhones, laptops, and tech accessories.',
-    url: 'https://zyrotech.netlify.app/',
+    url: 'https://zyrotech.netlify.app',
     siteName: 'ZyroTech',
     images: [
       {
-        url: 'https://zyrotech.netlify.app/og-image.jpg', // ✅ Full URL
+        url: 'https://zyrotech.netlify.app/og-image.png',
         width: 1200,
         height: 630,
         alt: 'ZyroTech | Premium Gadgets at Affordable Prices',
@@ -46,7 +45,7 @@ export const metadata: Metadata = {
     title: 'ZyroTech Gadgets Store',
     description:
       'Premium tech at unbeatable prices. Shop laptops, iPhones, accessories & more.',
-    images: ['https://zyrotech.netlify.app/og-image.png'], // ✅ Full URL
+    images: ['https://zyrotech.netlify.app/og-image.png'],
     creator: '@zyrotech',
   },
   icons: {
@@ -56,14 +55,12 @@ export const metadata: Metadata = {
   category: 'technology',
 }
 
-// ✅ Viewport export
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
 }
 
-// ✅ Theme color
 export const themeColor = '#0f172a'
 
 export default function RootLayout({
@@ -73,7 +70,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head />
       <body
         className={`${inter.className} bg-white dark:bg-zinc-950 text-gray-900 dark:text-white mt-12`}
       >

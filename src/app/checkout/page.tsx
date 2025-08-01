@@ -32,24 +32,26 @@ export default function CheckoutPage() {
   )
 
   const handleSuccess = async () => {
-    await fetch('https://formspree.io/f/mwkgvqek', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...formData,
-        order: cartItems.map((item) => ({
-          title: item.title,
-          quantity: item.quantity,
-          price: item.price,
-        })),
-        totalAmount,
-      }),
-    })
+    try {
+      await fetch('https://formspree.io/f/mwkgvqek', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          order: cartItems.map((item) => ({
+            title: item.title,
+            quantity: item.quantity,
+            price: item.price,
+          })),
+          totalAmount,
+        }),
+      })
 
-    clearCart()
-    setPaymentSuccess(true)
+      clearCart()
+      setPaymentSuccess(true)
+    } catch {
+      // swallow errors silently – already enough feedback from redirect/flow
+    }
   }
 
   useEffect(() => {
@@ -62,6 +64,13 @@ export default function CheckoutPage() {
     setFormData(data)
     setShowPayment(true)
   }
+
+  // Optional: Block access if cart is empty
+  useEffect(() => {
+    if (cartItems.length === 0 && !paymentSuccess) {
+      router.push('/')
+    }
+  }, [cartItems.length, paymentSuccess, router])
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
@@ -147,7 +156,7 @@ export default function CheckoutPage() {
               email={formData.email}
               phone={formData.phone}
               address={formData.address}
-              amount={totalAmount * 100} // in kobo
+              amount={totalAmount * 100}
               onSuccess={handleSuccess}
             />
           </div>

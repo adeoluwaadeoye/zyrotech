@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
 import type { Metadata, Viewport } from 'next'
 
+
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
 // ✅ This remains inside layout

@@ -1,20 +1,24 @@
-// app/category/[slug]/page.tsx
 import { getProductsByCategory } from '@/lib/products'
 import { Product } from '@/types'
 import ProductCard from '@/components/ProductCard'
 import CategoryBreadcrumb from '@/components/CategoryBreadcrumb'
+import { notFound } from 'next/navigation'
 
-export default function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params
+const validCategories = ['phones', 'laptops', 'accessories'] as const
+type Category = typeof validCategories[number]
 
-  const validCategories = ['phones', 'laptops', 'accessories'] as const
-  type Category = typeof validCategories[number]
+type PageProps = {
+  params: { slug: string }
+}
+
+export default async function Page(props: PageProps) {
+  const slug = props.params.slug
 
   if (!validCategories.includes(slug as Category)) {
-    return <div className="p-4 text-red-500 font-semibold">Invalid category</div>
+    notFound()
   }
 
-  const products = getProductsByCategory(slug as Category)
+  const products = await getProductsByCategory(slug as Category)
 
   return (
     <section className="p-4">

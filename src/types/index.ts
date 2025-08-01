@@ -14,3 +14,4 @@ export interface CartItem extends Product {
 }
 
 export type Category = "phones" | "laptops" | "accessories"
+

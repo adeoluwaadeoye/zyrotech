@@ -1,91 +1,66 @@
-'use client'
+// src/app/category/page.tsx
 
-import React from 'react'
 import Link from 'next/link'
-import { Smartphone, Laptop, Headphones } from 'lucide-react'
-import BreadCrumb from '@/components/BreadCrumb'
+import { categories } from '@/lib/categories'
+import { ArrowRight, ChevronRight } from 'lucide-react'
 
-const categories = [
-  {
-    name: 'Phones',
-    description: 'Explore the latest iPhones and Android phones built for speed and clarity.',
-    icon: Smartphone,
-    slug: 'phones',
-    color: 'text-blue-500',
-    bg: 'bg-blue-50 dark:bg-zinc-800',
-  },
-  {
-    name: 'Laptops',
-    description: 'Top-tier laptops for productivity, gaming, and everything in between.',
-    icon: Laptop,
-    slug: 'laptops',
-    color: 'text-blue-500',
-    bg: 'bg-green-50 dark:bg-zinc-800',
-  },
-  {
-    name: 'Accessories',
-    description: 'From earbuds to chargers, find gadgets to complete your setup.',
-    icon: Headphones,
-    slug: 'accessories',
-    color: 'text-blue-500',
-    bg: 'bg-purple-50 dark:bg-zinc-800',
-  },
-]
-
-export default function CategoryPage() {
+export default function CategoryListPage() {
   return (
-    <div className="relative px-4 md:px-12 pb-16 overflow-hidden pt-12">
-      {/* Subtle background illustration */}
-      <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-br from-gray-50 to-white dark:from-zinc-900 dark:to-black -z-10" />
+    <section className="py-12 px-4 max-w-6xl mx-auto space-y-10">
+      {/* Breadcrumb */}
+      <nav className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+        <ol className="flex items-center space-x-1">
+          <li>
+            <Link href="/" className="hover:underline text-gray-600 dark:text-gray-300">Home</Link>
+          </li>
+          <li>
+            <ChevronRight className="h-4 w-4 mx-1" />
+          </li>
+          <li className="text-gray-900 dark:text-white font-medium">Categories</li>
+        </ol>
+      </nav>
 
-      <BreadCrumb />
-
-      {/* Intro banner */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white">
-          Shop by Category
-        </h1>
-        <p className="text-gray-600 dark:text-gray-400 mt-2 max-w-xl mx-auto">
-          Discover top tech picks — sorted by what you&apos;re looking for.
+      {/* Page Title */}
+      <header className="text-center">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-1">Explore Product Categories</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          Select a category to discover curated tech essentials.
         </p>
-      </div>
+      </header>
 
-      {/* Category Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {categories.map(({ name, description, icon: Icon, slug, color, bg }) => (
-          <Link
-            key={slug}
-            href={`/category/${slug}`}
-            className={`group rounded-2xl shadow-md border border-gray-200 dark:border-zinc-700 ${bg} hover:scale-105 transition-transform duration-300 hover:shadow-xl p-6`}
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 rounded-full bg-white dark:bg-zinc-900 shadow-sm">
-                <Icon size={32} className={`${color}`} />
+      {/* Category Grid */}
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {categories.map(category => (
+          <li key={category.slug} className="group border dark:border-gray-800 bg-white dark:bg-gray-900 rounded-xl p-5 shadow-sm hover:shadow-md transition-all">
+            <Link href={`/category/${category.slug}`} className="flex flex-col h-full justify-between">
+              <div className="flex-1">
+                <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {category.name}
+                </h2>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {category.description}
+                </p>
               </div>
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                {name}
-              </h2>
-            </div>
-            <p className="text-sm text-gray-600 dark:text-zinc-400">
-              {description}
-            </p>
-
-            {/* Call to Action */}
-            <div className="mt-4 inline-flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:underline">
-              Browse {name}
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </Link>
+              <div className="mt-4 flex items-center text-sm text-blue-600 dark:text-blue-400 font-medium group-hover:underline">
+                Browse <ArrowRight className="ml-1 h-4 w-4" />
+              </div>
+            </Link>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+
+      {/* Advert Section */}
+      <section className="mt-16 bg-blue-50 dark:bg-blue-950 p-8 rounded-xl text-center shadow-inner">
+        <h2 className="text-xl sm:text-2xl font-semibold text-blue-800 dark:text-blue-300 mb-2">
+          Don’t Miss Our Back-to-School Tech Deals!
+        </h2>
+        <p className="text-sm text-gray-700 dark:text-gray-300 max-w-xl mx-auto mb-4">
+          Save big on laptops, phones, and accessories for the new season. Limited-time offers while stock lasts.
+        </p>
+        <Link href="/promo" className="inline-block mt-2 px-6 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md transition">
+          Shop Featured Deals
+        </Link>
+      </section>
+    </section>
   )
 }

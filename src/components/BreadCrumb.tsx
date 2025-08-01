@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
 
 export default function BreadCrumb() {
   const pathname = usePathname()
@@ -13,38 +14,47 @@ export default function BreadCrumb() {
       let href = '/' + arr.slice(0, index + 1).join('/')
       let label = seg
 
-      // ✅ Normalize 'product' -> 'products' for breadcrumb link
       if (seg === 'product') {
         href = '/products'
         label = 'Products'
       }
 
-      // Capitalize label
       label = label.charAt(0).toUpperCase() + label.slice(1)
 
       return { href, label }
     })
 
+  if (segments.length === 0) return null
+
   return (
-    <nav className="mb-4 text-sm text-gray-600 dark:text-gray-300">
-      <ol className="flex space-x-2">
-        <li>
-          <Link href="/" className="hover:underline text-blue-500 dark:text-blue-400">
-            Home
-          </Link>
-        </li>
-        {segments.map((seg, i) => (
-          <li key={i} className="flex items-center space-x-2">
-            <span className="mx-1">/</span>
-            <Link
-              href={seg.href}
-              className="hover:underline text-blue-500 dark:text-blue-400 capitalize"
-            >
-              {seg.label}
-            </Link>
-          </li>
-        ))}
-      </ol>
+    <nav
+      aria-label="Breadcrumb"
+      className="mb-6 text-sm text-gray-600 dark:text-gray-300 flex items-center space-x-1"
+    >
+      <Link href="/" className="hover:underline text-blue-500 dark:text-blue-400">
+        Home
+      </Link>
+
+      {segments.map((seg, i) => {
+        const isLast = i === segments.length - 1
+        return (
+          <span key={i} className="flex items-center space-x-1">
+            <ChevronRight className="h-4 w-4 mx-1 text-gray-400" />
+            {isLast ? (
+              <span className="font-semibold text-gray-900 dark:text-white">
+                {seg.label}
+              </span>
+            ) : (
+              <Link
+                href={seg.href}
+                className="hover:underline text-blue-500 dark:text-blue-400 capitalize"
+              >
+                {seg.label}
+              </Link>
+            )}
+          </span>
+        )
+      })}
     </nav>
   )
 }

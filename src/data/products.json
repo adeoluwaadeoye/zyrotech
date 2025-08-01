@@ -249,5 +249,15 @@
     "image": "/images/products/oraimo-powerbox.jpg",
     "price": 38000,
     "category": "accessories"
+  },
+  {
+    "id": 26,
+    "slug": "yaq-wireless-earbuds",
+    "title": "Yaq Wireless Earbuds",
+    "description": "Waterproof, portable earbuds with punchy sound for outdoor adventures.",
+    "shortDescription": "Bold sound in your ears.",
+    "image": "/images/products/headphones.jpg",
+    "price": 78000,
+    "category": "accessories"
   }
 ]

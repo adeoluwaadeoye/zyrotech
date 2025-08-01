@@ -1,40 +1,51 @@
-// src/app/category/[slug]/page.tsx
+import { notFound } from 'next/navigation'
+import { getProductsByCategorySlug } from '@/lib/products'
+import { categories } from '@/lib/categories'
+import ProductCard from '@/components/ProductCard'
+import { Product } from '@/types'
+import BreadCrumb from '@/components/BreadCrumb'
 
-import { getProductsByCategory } from '@/lib/products';
-import { Product } from '@/types';
-import ProductCard from '@/components/ProductCard';
-import CategoryBreadcrumb from '@/components/CategoryBreadcrumb';
-import { notFound } from 'next/navigation';
+type Params = Promise<{ slug: string }>
 
-const validCategories = ['phones', 'laptops', 'accessories'] as const;
-type Category = typeof validCategories[number];
+export function generateStaticParams() {
+  return categories.map(category => ({ slug: category.slug }))
+}
 
-type PageProps = {
-  params: Promise<{ slug: string }>; // ✅ tell Next this might be async
-};
+export default async function CategoryPage({ params }: { params: Params }) {
+  const { slug } = await params
 
-export default async function Page({ params }: PageProps) {
-  const { slug } = await params; // ✅ required per Next.js streaming behavior
+  const category = categories.find(cat => cat.slug === slug)
+  if (!category) return notFound()
 
-  if (!validCategories.includes(slug as Category)) {
-    notFound();
-  }
-
-  const products = await getProductsByCategory(slug as Category);
+  const products = getProductsByCategorySlug(category.slug)
 
   return (
-    <section className="p-4 mt-8">
-      <CategoryBreadcrumb />
+    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      {/* Breadcrumb */}
+      <BreadCrumb />
 
-      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white capitalize">
-        {slug}
-      </h1>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map((product: Product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+      {/* Header */}
+      <div className="mb-10 text-center sm:text-left">
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {category.name}
+        </h1>
+        <p className="mt-2 text-gray-600 dark:text-gray-400 max-w-2xl text-base sm:text-lg mx-auto sm:mx-0">
+          {category.description}
+        </p>
       </div>
+
+      {/* Products */}
+      {products.length === 0 ? (
+        <p className="text-gray-500 dark:text-gray-400 text-center">
+          No products in this category yet.
+        </p>
+      ) : (
+        <div className="grid gap-x-6 gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product: Product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </section>
-  );
+  )
 }

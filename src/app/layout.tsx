@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: 'ZyroTech',
     images: [
       {
-        url: 'https://zyrotech.netlify.app/og-image.png',
+        url: 'https://zyrotech.netlify.app/og-image.jpg', // ✅ Use .jpg
         width: 1200,
         height: 630,
         alt: 'ZyroTech | Premium Gadgets at Affordable Prices',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: 'ZyroTech Gadgets Store',
     description:
       'Premium tech at unbeatable prices. Shop laptops, iPhones, accessories & more.',
-    images: ['https://zyrotech.netlify.app/og-image.png'],
+    images: ['https://zyrotech.netlify.app/og-image.jpg'], // ✅ .jpg version
     creator: '@zyrotech',
   },
   icons: {
@@ -55,12 +55,14 @@ export const metadata: Metadata = {
   category: 'technology',
 }
 
+// ✅ Viewport settings
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
 }
 
+// ✅ Theme color
 export const themeColor = '#0f172a'
 
 export default function RootLayout({
@@ -70,6 +72,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head />
       <body
         className={`${inter.className} bg-white dark:bg-zinc-950 text-gray-900 dark:text-white mt-12`}
       >

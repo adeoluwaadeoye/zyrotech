@@ -5,10 +5,9 @@ import Footer from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
 import type { Metadata, Viewport } from 'next'
 
-
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
-// ✅ This remains inside layout
+// ✅ Updated metadata with full image URLs
 export const metadata: Metadata = {
   title: {
     default: 'ZyroTech Gadgets Store',
@@ -25,19 +24,19 @@ export const metadata: Metadata = {
     'Nigeria',
     'Gadget Deals',
   ],
-  metadataBase: new URL('https://zyrotech.com'),
+  metadataBase: new URL('https://zyrotech.netlify.app/'),
   openGraph: {
     title: 'ZyroTech Gadgets Store',
     description:
       'Affordable, high-quality gadgets. Discover our iPhones, laptops, and tech accessories.',
-    url: 'https://zyrotech.com',
+    url: 'https://zyrotech.netlify.app/',
     siteName: 'ZyroTech',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://zyrotech.netlify.app/og-image.jpg', // ✅ Full URL
         width: 1200,
         height: 630,
-        alt: 'ZyroTech – Premium Gadgets at Affordable Prices',
+        alt: 'ZyroTech | Premium Gadgets at Affordable Prices',
       },
     ],
     type: 'website',
@@ -47,7 +46,7 @@ export const metadata: Metadata = {
     title: 'ZyroTech Gadgets Store',
     description:
       'Premium tech at unbeatable prices. Shop laptops, iPhones, accessories & more.',
-    images: ['/og-image.jpg'],
+    images: ['https://zyrotech.netlify.app/og-image.png'], // ✅ Full URL
     creator: '@zyrotech',
   },
   icons: {
@@ -57,15 +56,15 @@ export const metadata: Metadata = {
   category: 'technology',
 }
 
-// ✅ Move viewport to its own export
+// ✅ Viewport export
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
 }
 
-// ✅ Move themeColor to its own export
-export const themeColor = '#0f172a' // dark slate
+// ✅ Theme color
+export const themeColor = '#0f172a'
 
 export default function RootLayout({
   children,
@@ -74,6 +73,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head />
       <body
         className={`${inter.className} bg-white dark:bg-zinc-950 text-gray-900 dark:text-white mt-12`}
       >

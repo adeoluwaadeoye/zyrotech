@@ -2,9 +2,14 @@
 
 import { useForm } from 'react-hook-form'
 import { useCart } from '@/context/CartContext'
-import PayWithPaystack from '@/components/PayWithPaystack'
+import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+
+// Lazy-load PayWithPaystack to prevent "window is not defined" error
+const PayWithPaystack = dynamic(() => import('@/components/PayWithPaystack'), {
+  ssr: false,
+})
 
 type FormData = {
   name: string
@@ -35,7 +40,9 @@ export default function CheckoutPage() {
     try {
       await fetch('https://formspree.io/f/mwkgvqek', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           ...formData,
           order: cartItems.map((item) => ({
@@ -49,8 +56,8 @@ export default function CheckoutPage() {
 
       clearCart()
       setPaymentSuccess(true)
-    } catch {
-      // swallow errors silently – already enough feedback from redirect/flow
+    } catch (error) {
+      console.error('Form submission failed:', error)
     }
   }
 
@@ -64,13 +71,6 @@ export default function CheckoutPage() {
     setFormData(data)
     setShowPayment(true)
   }
-
-  // Optional: Block access if cart is empty
-  useEffect(() => {
-    if (cartItems.length === 0 && !paymentSuccess) {
-      router.push('/')
-    }
-  }, [cartItems.length, paymentSuccess, router])
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">

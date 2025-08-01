@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+:root {
+  --radius: 0.625rem;
+  --background: oklch(100% 0% 0);
+}
 
 body {
   font-family: 'Inter', sans-serif;
@@ -8,5 +12,10 @@ body {
   color: var(--foreground);
 }
 
-
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111;
+    --foreground: #fff;
+}
+}
 

@@ -38,8 +38,8 @@ type PageProps = {
 // }
 
 
-export default async function Page(props: PageProps) {
-  const { slug } = props.params // ✅ fixed: removed `await`
+export default async function Page({ params }: PageProps) {
+  const { slug } = params
 
   if (!validCategories.includes(slug as Category)) {
     notFound()
@@ -50,6 +50,7 @@ export default async function Page(props: PageProps) {
   return (
     <section className="p-4">
       <CategoryBreadcrumb />
+
       <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white capitalize">
         {slug}
       </h1>

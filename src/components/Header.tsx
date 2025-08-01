@@ -43,13 +43,11 @@ export default function Header() {
 
             <div className="flex items-center gap-4">
               <Link
-                href="tel:+2348140898790"
-                title="+2348140898790"
+                href="/contact"
                 className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400"
               >
                 <PhoneCall className="w-4 h-4" /> Support
               </Link>
-
               <Link
                 href="/login"
                 className="flex items-center gap-1 hover:text-blue-600 dark:hover:text-blue-400"
@@ -170,10 +168,7 @@ export default function Header() {
             open={searchOpen}
             onClose={() => setSearchOpen(false)}
           >
-            <div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-              aria-hidden="true"
-            />
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" />
             <motion.div
               initial={{ y: "-100%" }}
               animate={{ y: 0 }}

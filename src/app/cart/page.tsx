@@ -46,13 +46,13 @@ export default function CartPage() {
       {/* Optional close button if modal/drawer */}
       <button
         onClick={() => window.history.back()}
-        className="absolute top-4 right-4 text-gray-500 hover:text-black dark:hover:text-white"
+        className="absolute top-12 right-4 text-gray-500 hover:text-black dark:hover:text-white"
         aria-label="Close cart"
       >
         <X className="w-7 h-7 p-1 rounded-full bg-blue-600 text-white" />
       </button>
 
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6 pt-12">
         <h1 className="text-2xl font-bold">Shopping Cart</h1>
         <p className="text-sm text-gray-600 dark:text-gray-400">
           {totalItems} item{totalItems > 1 ? "s" : ""} in cart

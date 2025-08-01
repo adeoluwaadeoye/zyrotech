@@ -1,39 +1,41 @@
-"use client";
+'use client'
 
-import { useForm } from "react-hook-form";
-import { useCart } from "@/context/CartContext";
-import PayWithPaystack from "@/components/PayWithPaystack";
-import { useState } from "react";
+import { useForm } from 'react-hook-form'
+import { useCart } from '@/context/CartContext'
+import PayWithPaystack from '@/components/PayWithPaystack'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 type FormData = {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-};
+  name: string
+  email: string
+  phone: string
+  address: string
+}
 
 export default function CheckoutPage() {
-  const { cartItems, clearCart } = useCart();
-  const [formData, setFormData] = useState<FormData | null>(null);
-  const [showPayment, setShowPayment] = useState(false);
+  const router = useRouter()
+  const { cartItems, clearCart } = useCart()
+  const [formData, setFormData] = useState<FormData | null>(null)
+  const [showPayment, setShowPayment] = useState(false)
+  const [paymentSuccess, setPaymentSuccess] = useState(false)
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>()
 
   const totalAmount = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
-  );
+  )
 
   const handleSuccess = async () => {
-    // Send order details to Formspree
-    await fetch("https://formspree.io/f/mwkgvqek", {
-      method: "POST",
+    await fetch('https://formspree.io/f/mwkgvqek', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         ...formData,
@@ -44,16 +46,22 @@ export default function CheckoutPage() {
         })),
         totalAmount,
       }),
-    });
+    })
 
-    clearCart();
-    window.location.href = "/thank-you";
-  };
+    clearCart()
+    setPaymentSuccess(true)
+  }
+
+  useEffect(() => {
+    if (paymentSuccess) {
+      router.push('/thank-you')
+    }
+  }, [paymentSuccess, router])
 
   const onSubmit = (data: FormData) => {
-    setFormData(data);
-    setShowPayment(true);
-  };
+    setFormData(data)
+    setShowPayment(true)
+  }
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-12">
@@ -69,7 +77,7 @@ export default function CheckoutPage() {
               Full Name
             </label>
             <input
-              {...register("name", { required: true })}
+              {...register('name', { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-500"
             />
             {errors.name && (
@@ -83,7 +91,7 @@ export default function CheckoutPage() {
             </label>
             <input
               type="email"
-              {...register("email", { required: true })}
+              {...register('email', { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-500"
             />
             {errors.email && (
@@ -96,7 +104,7 @@ export default function CheckoutPage() {
               Phone Number
             </label>
             <input
-              {...register("phone", { required: true })}
+              {...register('phone', { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-500"
             />
             {errors.phone && (
@@ -110,7 +118,7 @@ export default function CheckoutPage() {
             </label>
             <textarea
               rows={3}
-              {...register("address", { required: true })}
+              {...register('address', { required: true })}
               className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-500"
             />
             {errors.address && (
@@ -129,7 +137,7 @@ export default function CheckoutPage() {
         formData && (
           <div className="bg-white shadow-md rounded-lg p-6 mt-8 text-center">
             <h2 className="text-xl font-semibold mb-6">
-              Pay{" "}
+              Pay{' '}
               <span className="text-green-600">
                 ₦{totalAmount.toLocaleString()}
               </span>
@@ -139,12 +147,12 @@ export default function CheckoutPage() {
               email={formData.email}
               phone={formData.phone}
               address={formData.address}
-              amount={totalAmount * 100} // kobo
+              amount={totalAmount * 100} // in kobo
               onSuccess={handleSuccess}
             />
           </div>
         )
       )}
     </div>
-  );
+  )
 }

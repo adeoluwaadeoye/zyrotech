@@ -1,28 +1,39 @@
- import './globals.css'
+import './globals.css'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { CartProvider } from '@/context/CartContext'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
+// ✅ This remains inside layout
 export const metadata: Metadata = {
   title: {
     default: 'ZyroTech Gadgets Store',
     template: '%s | ZyroTech',
   },
-  description: 'Shop iPhones, laptops, and accessories at unbeatable prices. Fast delivery, secure checkout, and trusted support.',
-  keywords: ['ZyroTech', 'iPhones', 'Laptops', 'Tech Accessories', 'Online Store', 'Nigeria', 'Gadget Deals'],
-  metadataBase: new URL('https://zyrotech.com'), // Replace with your actual domain
+  description:
+    'Shop iPhones, laptops, and accessories at unbeatable prices. Fast delivery, secure checkout, and trusted support.',
+  keywords: [
+    'ZyroTech',
+    'iPhones',
+    'Laptops',
+    'Tech Accessories',
+    'Online Store',
+    'Nigeria',
+    'Gadget Deals',
+  ],
+  metadataBase: new URL('https://zyrotech.com'),
   openGraph: {
     title: 'ZyroTech Gadgets Store',
-    description: 'Affordable, high-quality gadgets. Discover our iPhones, laptops, and tech accessories.',
+    description:
+      'Affordable, high-quality gadgets. Discover our iPhones, laptops, and tech accessories.',
     url: 'https://zyrotech.com',
     siteName: 'ZyroTech',
     images: [
       {
-        url: '/og-image.jpg', // Place this in /public/
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'ZyroTech – Premium Gadgets at Affordable Prices',
@@ -33,22 +44,27 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'ZyroTech Gadgets Store',
-    description: 'Premium tech at unbeatable prices. Shop laptops, iPhones, accessories & more.',
+    description:
+      'Premium tech at unbeatable prices. Shop laptops, iPhones, accessories & more.',
     images: ['/og-image.jpg'],
-    creator: '@zyrotech', // Optional: Add if you have a Twitter handle
+    creator: '@zyrotech',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: '#0f172a',
   icons: {
-    icon: '/favicon.ico', // Place favicon.ico in /public
-    apple: '/apple-touch-icon.png', // Optional: 180x180 for iOS, add if needed
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
   category: 'technology',
 }
+
+// ✅ Move viewport to its own export
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+}
+
+// ✅ Move themeColor to its own export
+export const themeColor = '#0f172a' // dark slate
 
 export default function RootLayout({
   children,

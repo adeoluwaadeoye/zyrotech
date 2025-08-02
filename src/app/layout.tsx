@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://zyrotech.netlify.app/og-image.png",
+        url: "https://zyrotech.netlify.app/api/og", // Dynamic OG image
         width: 1200,
         height: 630,
         alt: "ZyroTech | Premium Gadgets at Affordable Prices",
@@ -47,10 +46,10 @@ export const metadata: Metadata = {
     description:
       "Premium tech at unbeatable prices. Shop laptops, iPhones, accessories & more.",
     creator: "@zyrotech",
-    images: ["https://zyrotech.netlify.app/og-image.png"],
+    images: ["https://zyrotech.netlify.app/api/og"],
   },
   icons: {
-    icon: "/logo.png",
+    icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   category: "technology",
@@ -71,24 +70,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        {/* Fallback meta tags for WhatsApp & stubborn bots */}
-        <meta
-          property="og:image"
-          content="https://zyrotech.netlify.app/page.jpg"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta name="theme-color" content="#0f172a" />
-        <link rel="icon" href="/logo.png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
-        <meta
-          property="og:image"
-          content="https://zyrotech.netlify.app/page.png"
-        />
-        <meta property="og:type" content="website" />
-        <link rel="apple-touch-icon" href="logo.png" />
-      </Head>
       <body
         className={`${inter.className} bg-white dark:bg-zinc-950 text-gray-900 dark:text-white mt-12`}
       >
